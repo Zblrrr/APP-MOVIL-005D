@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, AnimationController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -21,7 +22,8 @@ export class RestablecerPage implements OnInit {
   constructor(
     private loginService: LoginService,
     private alertController: AlertController,
-    private animationController: AnimationController
+    private animationController: AnimationController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -43,7 +45,10 @@ export class RestablecerPage implements OnInit {
       const user = this.loginService.users.find(user => user.usuario === this.usuario);
       if (user) {
         user.contrasenia = this.nuevaContrasenia;
-        this.showAlert('Contraseña actualizada', 'Tu contraseña ha sido restablecida correctamente.');
+        this.showAlert('Contraseña actualizada', 'Tu contraseña ha sido restablecida correctamente.')
+          .then(() => {
+            this.router.navigate(['/home']);
+          });
         this.userValid = false;
         this.usuario = '';
         this.nuevaContrasenia = '';
