@@ -1,20 +1,24 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-text-center ion-no-border decoracion-header">
   <ion-toolbar>
     <ion-title>
-      Blank
+      <h1>RegistrAPP</h1>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="center-container">
+    <ion-list>
+      <ion-item>
+        <ion-input label="Usuario" labelPlacement="floating" placeholder="Ingresar usuario" [(ngModel)]="usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Contraseña" type="password" labelPlacement="floating" placeholder="Ingresar contraseña" [(ngModel)]="contrasenia"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button color="warning" expand="full" (click)="validateLogin()">INGRESAR</ion-button>
+    <div class="container-link">
+      <a href="" [routerLink]="['/restablecer']">Olvidé mi contraseña</a>
+    </div>
   </div>
 </ion-content>
