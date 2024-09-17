@@ -11,18 +11,15 @@ import { LoginService } from '../services/login.service';
 })
 export class HomePage {
 
-  usuario: string;
-  contrasenia: string;
+  usuario!: string;
+  contrasenia!: string;
 
   constructor(
     private toastController: ToastController,
     private alertController: AlertController,
     private router: Router,
     private loginService: LoginService
-  ) {
-    this.usuario = ''
-    this.contrasenia = '';
-  }
+  ) { }
 
   async validateLogin() {
     console.log("Ejecutando validación PAGE!");

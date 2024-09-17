@@ -1,4 +1,4 @@
-<ion-header [translucent]="true" class="ion-text-center ion-no-border">
+<ion-header [translucent]="true" class="ion-text-center ion-no-border decoracion-header">
   <ion-toolbar>
     <ion-title>
       <h1>RegistrAPP</h1>
@@ -7,16 +7,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item>
-      <ion-input label="Usuario" labelPlacement="floating"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Contraseña" type="password" labelPlacement="floating"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button color="warning" expand="block" (click)="validateLogin()">INGRESAR</ion-button>
-  <div class="container-link">
-    <a href="" [routerLink]="['/restablecer']">Olvidé mi contraseña</a>
+  <div class="center-container">
+    <ion-list>
+      <ion-item>
+        <ion-input label="Usuario" labelPlacement="floating" placeholder="Ingresar usuario" [(ngModel)]="usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Contraseña" type="password" labelPlacement="floating" placeholder="Ingresar contraseña" [(ngModel)]="contrasenia"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button color="warning" expand="full" (click)="validateLogin()">INGRESAR</ion-button>
+    <div class="container-link">
+      <a href="" [routerLink]="['/restablecer']">Olvidé mi contraseña</a>
+    </div>
   </div>
 </ion-content>

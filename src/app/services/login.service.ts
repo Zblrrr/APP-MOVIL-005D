@@ -7,17 +7,18 @@ import { User } from '../models/user';
 export class LoginService {
 
   users: User[] = [
-
+    new User('admin', '123'),
+    new User('felipe', '1234')
   ]
 
   constructor() { }
 
-  validateLogin(usuario: string, contrasenia: string): boolean {
+  validateLogin(u: string, p: string): boolean {
     console.log("Ejecutando validacion SERVICE!")
-    const found = this.users.find(user => user.usuario === usuario)
+    const found = this.users.find(user => user.usuario === u)
     if (found !== undefined) {
       console.log("Usuario existe!")
-      return found.contrasenia === contrasenia;
+      return found.contrasenia === p;
     }
     console.log("Usuario no existe!")
     return false;
