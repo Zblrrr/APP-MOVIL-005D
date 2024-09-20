@@ -1,0 +1,26 @@
+<ion-header [translucent]="true" class="decoracion-header ion-text-center">
+  <ion-toolbar>
+    <ion-title>
+      <h1>lectorQr</h1>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/index']">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Recuadro que simula la cámara del celular -->
+  <div class="camera-box ion-text-center">
+    <p>Coloque el código adentro del recuadro</p>
+  </div>
+
+  <!-- Botón para activar el lector de QR (aun no esta listo)-->
+  <div class="ion-text-center">
+    <ion-button shape="round" fill="solid" size="large" color="primary">
+      <ion-icon name="camera"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

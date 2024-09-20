@@ -30,7 +30,7 @@ export class RestablecerPage implements OnInit {
   }
 
   validateUser() {
-    const found = this.loginService.users.find(user => user.usuario === this.usuario);
+    const found = this.loginService.getUsers().find(user => user.usuario === this.usuario);
     if (found) {
       this.userValid = true;
       this.showAlert('Usuario válido', 'Puedes proceder a cambiar tu contraseña.');
@@ -41,14 +41,19 @@ export class RestablecerPage implements OnInit {
   }
 
   resetPassword() {
+  // Verificar si las contraseñas coinciden y si tienen al menos 3 caracteres
+  if (this.nuevaContrasenia.length >= 3 && this.repetirContrasenia.length >= 3) {
     if (this.nuevaContrasenia === this.repetirContrasenia) {
-      const user = this.loginService.users.find(user => user.usuario === this.usuario);
+      const user = this.loginService.getUsers().find(user => user.usuario === this.usuario);
       if (user) {
         user.contrasenia = this.nuevaContrasenia;
         this.showAlert('Contraseña actualizada', 'Tu contraseña ha sido restablecida correctamente.')
           .then(() => {
+            // Redirigir a la página 'home' después de restablecer la contraseña
             this.router.navigate(['/home']);
           });
+
+        // Resetear los campos
         this.userValid = false;
         this.usuario = '';
         this.nuevaContrasenia = '';
@@ -57,8 +62,10 @@ export class RestablecerPage implements OnInit {
     } else {
       this.showAlert('Error', 'Las contraseñas no coinciden.');
     }
+  } else {
+    this.showAlert('Error', 'La contraseña debe tener al menos 3 caracteres.');
   }
-
+  }
   async showAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       header: header,
@@ -74,25 +81,25 @@ export class RestablecerPage implements OnInit {
       .addElement(this.nuevaContraseniaInput.nativeElement)
       .duration(2000)
       .fromTo('opacity', '0', '1')
-      .fromTo('transform', 'translateY(-50vh)', 'translateY(0)'); 
-  
+      .fromTo('transform', 'translateY(-50vh)', 'translateY(0)');
+
     const repetirContraseniaAnim = this.animationController.create()
       .addElement(this.repetirContraseniaInput.nativeElement)
       .duration(2000)
-      .delay(2500) 
+      .delay(2500)
       .fromTo('opacity', '0', '1')
       .fromTo('transform', 'translateY(-50vh)', 'translateY(0)');
-  
+
     const resetButtonAnim = this.animationController.create()
       .addElement(this.resetButton.nativeElement)
       .duration(2000)
       .delay(5000)
       .fromTo('opacity', '0', '1')
       .fromTo('transform', 'translateY(-50vh)', 'translateY(0)');
-  
+
     nuevaContraseniaAnim.play();
     repetirContraseniaAnim.play();
     resetButtonAnim.play();
   }
-  
+
 }

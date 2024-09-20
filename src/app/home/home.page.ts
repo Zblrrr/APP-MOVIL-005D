@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { LoginService } from '../services/login.service';
-
 
 @Component({
   selector: 'app-home',
@@ -23,29 +22,30 @@ export class HomePage {
 
   async validateLogin() {
     console.log("Ejecutando validación PAGE!");
-  
+
+    // Validar el login
     if (this.loginService.validateLogin(this.usuario, this.contrasenia)) {
       this.showToastMessage('Login exitoso', 'success');
+      
       const extras: NavigationExtras = {
         state: {
-          usuario: this.usuario
+          usuario: this.usuario 
         }
       };
-  
       this.router.navigate(['/index'], extras);
     } else {
       this.showAlertMessage('Datos Incorrectos', 'Usuario y/o contraseña incorrecta');
     }
   }
-  
+
   async showToastMessage(mensaje: string, color: string) {
     const toast = await this.toastController.create({
       duration: 3000,
       message: mensaje,
       position: 'bottom',
       color: color
-    })
-    toast.present()
+    });
+    toast.present();
   }
 
   async showAlertMessage(header: string, message: string) {
@@ -54,8 +54,7 @@ export class HomePage {
       message: message,
       buttons: ['Aceptar'],
     });
-  
+
     await alert.present();
   }
-  
 }

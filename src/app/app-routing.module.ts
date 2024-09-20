@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'restablecer',
     loadChildren: () => import('./pages/restablecer/restablecer.module').then( m => m.RestablecerPageModule)
+  },  {
+    path: 'lector-qr',
+    loadChildren: () => import('./pages/lector-qr/lector-qr.module').then( m => m.LectorQrPageModule)
   },
+
 ];
 
 @NgModule({

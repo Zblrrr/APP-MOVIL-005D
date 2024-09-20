@@ -1,0 +1,37 @@
+.decoracion-header ion-toolbar{
+    --background: #0E3B66; 
+    height: 55px;
+    display: flex;
+}
+
+.decoracion-header h1 {
+    color: white;
+}
+
+ion-icon{
+    color: white;
+}
+
+.camera-box {
+    width: 300px;
+    height: 300px;
+    border: 5px dashed var(--ion-color-primary); /* Borde del recuadro de la cámara */
+    margin: 0 auto 150px; /* Centrar el recuadro y agregar espacio inferior */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; /* Fondo gris claro */
+}
+  
+.camera-box p {
+    font-size: 16px;
+    color: var(--ion-color-dark); /* Color del texto */
+}
+  
+ion-button {
+    --border-radius: 50%; /* Hacer el botón circular */
+    width: 80px;
+    height: 80px;
+    --icon-size: 32px; /* Ajustar el tamaño del ícono */
+}
+  
